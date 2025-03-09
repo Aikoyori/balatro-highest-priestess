@@ -720,6 +720,9 @@ for _, hand_stats in pairs(poker_hands) do
 
     local function custom_hand_eval(hand)
         --update_hand_cache(hand)
+        if not G.hand or not G.hand.cards then
+            return
+        end
 
         if hand_stats.chance and not (pseudorandom("plain_luck") < G.GAME.probabilities.normal/hand_stats.chance) then
             return
